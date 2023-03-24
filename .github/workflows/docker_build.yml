@@ -3,8 +3,23 @@ name: Docker Image build
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Repo environment"
+        options:
+          - dev
+          - qa
+        required: true
+        type: environment
+      region:
+        description: "Virginia or Ohio"
+        options:
+          - us-east-1
+          - us-east-2
+      branch:
+        type: string
+        required: true
 
 jobs:
 
